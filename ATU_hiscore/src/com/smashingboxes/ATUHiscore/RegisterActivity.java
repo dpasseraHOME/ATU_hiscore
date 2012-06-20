@@ -61,11 +61,21 @@ public class RegisterActivity extends Activity {
 			isValid = false;
 			//TODO display empty field error
 			Log.v(LOG_TAG, "## email field empty");
-		} else if(((EditText)findViewById(R.id.register_field_email_confirm)).length() == 0) {
+		}
+		
+		if(!DataUtilities.isEmailValid(email)) {
+			isValid = false;
+			//TODO display empty field error
+			Log.v(LOG_TAG, "## email is invalid");
+		}
+		
+		if(((EditText)findViewById(R.id.register_field_email_confirm)).length() == 0) {
 			isValid = false;
 			//TODO display empty field error
 			Log.v(LOG_TAG, "## email confirm field empty");
-		} else if(!email.equals(emailConfirm)) {
+		}
+		
+		if(!email.equals(emailConfirm)) {
 			isValid = false;
 			//TODO display email validation error
 			Log.v(LOG_TAG, "## email confirm does not match email");
