@@ -76,12 +76,13 @@ public class RegisterActivity extends Activity {
 		return isValid;
 	}
 	
-	private void submitForm() {
+	private void submitForm() throws Exception {
 		Log.v(LOG_TAG, "# submitForm");
 		
 		String pName = ((EditText)findViewById(R.id.register_field_name)).getText().toString();
 		String pEmail = ((EditText)findViewById(R.id.register_field_email)).getText().toString();
-		String pPIN = ((EditText)findViewById(R.id.register_field_pin)).getText().toString();
+		String pPIN = DataUtilities.md5EncryptString(((EditText)findViewById(R.id.register_field_pin)).getText().toString());
+		
 		
 		// data to send
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -90,7 +91,7 @@ public class RegisterActivity extends Activity {
 		nameValuePairs.add(new BasicNameValuePair("email", pEmail));
 		nameValuePairs.add(new BasicNameValuePair("PIN", pPIN));
 		
-		JSONObject jsonData = PHPPostUtility.post("http://www.monkeydriver.com/atu/site.php", nameValuePairs);
+		JSONObject jsonData = DataUtilities.post("http://www.monkeydriver.com/atu/site.php", nameValuePairs);
 		Log.v(LOG_TAG,"@ jsonData = " + jsonData);
 	}
 	
@@ -101,7 +102,12 @@ public class RegisterActivity extends Activity {
 			
 			if(id == R.id.register_button_submit) {
 				if(validateForm()) {
-					submitForm();
+					try {
+						submitForm();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} else {
 					
 				}

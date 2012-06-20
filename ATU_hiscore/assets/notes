@@ -1,7 +1,6 @@
 Next
 - register
-	- abstract PHP POST utility
-	- encrypt PIN client-side?
+	- encrypt PIN client-side
 - store user info on phone
 - check for user info on startup
 - launch home if user info exists

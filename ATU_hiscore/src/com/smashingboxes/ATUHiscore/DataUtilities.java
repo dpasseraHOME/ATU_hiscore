@@ -3,6 +3,8 @@ package com.smashingboxes.ATUHiscore;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import org.apache.http.HttpEntity;
@@ -18,7 +20,9 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-public class PHPPostUtility {
+public class DataUtilities {
+	
+	private final static String LOG_TAG = "log_DataUtilities";
 
 	public static JSONObject post(String urlStr, ArrayList<NameValuePair> nameValuePairs) {
 		JSONObject jsonData = null;
@@ -35,7 +39,7 @@ public class PHPPostUtility {
 			HttpEntity entity = response.getEntity();
 			inputstream = entity.getContent();
 		} catch(Exception e) {
-			Log.v("log_post","Error in http connection " + e.toString());
+			Log.v(LOG_TAG,"Error in http connection " + e.toString());
 		}
 		
 		// convert http post response to string
@@ -49,25 +53,36 @@ public class PHPPostUtility {
 			inputstream.close();
 			result = stringbuilder.toString();
 		} catch(Exception e) {
-			Log.v("log_post", "Error converting result " + e.toString());
+			Log.v(LOG_TAG, "Error converting result " + e.toString());
 		}
 		
 		// parse json data
 		try {
-			/*
-			JSONArray jArray = new JSONArray(result);
-			for(int i=0; i<jArray.length(); i++) {
-				jsonData = jArray.getJSONObject(i);
-				Log.v("log_post","isSuccess: " + jsonData.getString("isSuccess") + ", " + "msg: " + jsonData.getString("msg"));
-			}
-			*/
 			jsonData = new JSONObject(result);
-			Log.v("log_post", "isSucces: " + jsonData.getString("isSuccess"));
+			Log.v(LOG_TAG, "isSucces: " + jsonData.getString("isSuccess"));
 		} catch(JSONException e) {
-			Log.v("log_post", "Error parsing data " + e.toString());
+			Log.v(LOG_TAG, "Error parsing data " + e.toString());
 		}
 		
 		return jsonData;
+	}
+	
+	public static String md5EncryptString(String str) throws Exception {
+		String password = "tinybaby17mountain!!";
+		
+		MessageDigest m = MessageDigest.getInstance("MD5");
+		m.update(password.getBytes("UTF8"));
+		byte s[] = m.digest();
+		
+		String result = "";
+		
+		for(int i=0; i<s.length; i++) {
+			result += Integer.toHexString((0x000000ff & s[i]) | 0xffffff00).substring(6);
+		}
+		
+		Log.v(LOG_TAG, "@ result = " + result);
+		
+		return result;
 	}
 	
 }
