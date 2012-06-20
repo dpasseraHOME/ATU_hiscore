@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ATU_hiscore</string>
+    
+    <!--  general labels -->
+    <string name="button_register">Register</string>
+    <string name="button_signIn">Sign in</string>
+    <string name="button_confirm">Okay</string>
+    <string name="button_submit">Submit</string>
+    <string name="button_cancel">Cancel</string>
+
+    <!-- main -->
+    <string name="main_title">ATU Hi-Score</string>
+    <string name="main_blurb">Welcome to the ATU Hi-Score app. With a few taps, you can upload photos of your high scores in the ATU Arcade. Never be bummed out by the nightly score reset again! etc etc blah blah blah</string>
+    <string name="main_bySB">by Smashing Boxes</string>
+    
+    <!-- register -->
+    <string name="register_header">Register</string>
+    <string name="register_label_name">Display name</string>
+    <string name="register_label_email">Email address</string>
+    <string name="register_label_email_confirm">Confirm email address</string>
+    <string name="register_label_pin">PIN</string>
+    <string name="register_opt_in1">Check to receive weekly digest of new scores and rankings.</string>
+    <string name="register_opt_in2">Check to receive push notifications when your scores are approved, or when your rankings change.</string>
+    
+</resources>

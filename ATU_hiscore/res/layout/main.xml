@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_linear" >
+
+    <TextView
+        style="@style/title_box"
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:text="@string/main_title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="32sp"
+        android:textColor="@color/text_dark"
+        android:gravity="center" />
+    
+    <TextView
+        android:id="@+id/main_bySB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_title"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/main_bySB"
+        android:gravity="center"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/main_blurb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/main_bySB"
+        android:layout_marginTop="26dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="@string/main_blurb"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text_dark" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_blurb"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:text="@string/button_register" />
+
+    <Button
+        android:id="@+id/button_signIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_register"
+        android:layout_below="@+id/button_register"
+        android:layout_marginTop="18dp"
+        android:text="@string/button_signIn" />
+
+</RelativeLayout>

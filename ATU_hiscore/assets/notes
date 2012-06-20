@@ -1,0 +1,17 @@
+Next
+- register
+	- abstract PHP POST utility
+	- encrypt PIN client-side?
+- store user info on phone
+- check for user info on startup
+- launch home if user info exists
+
+=====
+DB
+$host = "dpassera.startlogicmysql.com";
+$user = "insteadof00user";
+$pass = "flashothy1717";
+$database = "insteadof";
+
+_atu_scores
+_atu_users
