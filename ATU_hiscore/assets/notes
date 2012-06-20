@@ -5,6 +5,7 @@ Next
 - store user info on phone
 - check for user info on startup
 - launch home if user info exists
+- error highlights
 
 =====
 DB
