@@ -1,6 +1,5 @@
 Next
 - register
-	- validate email syntax
 	- check for existence of email address and display name in db
 - store user info on phone
 - check for user info on startup
