@@ -13,6 +13,8 @@
 			return mysql_real_escape_string($str);
 		}
 
+		$table = "_atu_users";
+
 		$name = clean($_POST['name']);
 		$return['name'] = $name;
 
@@ -22,13 +24,22 @@
 		$PIN = clean($_POST['PIN']);
 		$return['PIN'] = $PIN;
 
-		//create new row in user table
-		$query = "INSERT INTO _atu_users (_name, _email, _pin)
-				VALUES ('".$name."', '".$email."', '".$PIN."')";
-		$qResult = mysql_query($query, $linkID) or die("INSERT INTO _atu_users failed.");
+		//check if email address exists in table
+		$query = "SELECT * FROM ".$table." WHERE _email='".$email."'";
+		$result = mysql_query($query) or die(mysql_error());
 
-		$return['isSuccess'] = 'yes';
-		$return['msg'] = 'added';
+		if(mysql_num_rows($result)) {			
+			$return['isSuccess'] = 'no';
+			$return['msg'] = 'email exists';
+		} else {
+			//create new row in user table
+			$query = "INSERT INTO ".$table." (_name, _email, _pin)
+					VALUES ('".$name."', '".$email."', '".$PIN."')";
+			$qResult = mysql_query($query, $linkID) or die("INSERT INTO _atu_users failed.");
+
+			$return['isSuccess'] = 'yes';
+			$return['msg'] = 'added';
+		}
 
 		echo json_encode($return);
 	} else {
