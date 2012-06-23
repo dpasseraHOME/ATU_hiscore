@@ -25,12 +25,21 @@
 		$return['PIN'] = $PIN;
 
 		//check if email address exists in table
-		$query = "SELECT * FROM ".$table." WHERE _email='".$email."'";
+		$query = "SELECT * FROM ".$table." WHERE _email='".$email."' OR _name='".$name."'";
 		$result = mysql_query($query) or die(mysql_error());
 
-		if(mysql_num_rows($result)) {			
+		if(mysql_num_rows($result)) {	
 			$return['isSuccess'] = 'no';
-			$return['msg'] = 'email exists';
+
+			while($row = mysql_fetch_assoc($result)) {
+				if($row['_email'] == $email) {
+					$return['msg'] = 'duplicate email';
+				}
+				if($row['_name'] == $name) {
+					$return['msg'] = $return['msg'].', duplicate name';
+				}
+			}
+			
 		} else {
 			//create new row in user table
 			$query = "INSERT INTO ".$table." (_name, _email, _pin)
@@ -40,6 +49,8 @@
 			$return['isSuccess'] = 'yes';
 			$return['msg'] = 'added';
 		}
+
+		echo(2);
 
 		echo json_encode($return);
 	} else {
