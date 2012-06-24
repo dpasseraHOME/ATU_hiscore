@@ -1,10 +1,5 @@
 Next
-- store user info on phone
-	- shared preferences?
-- check for user info on startup
-- launch home if user info exists
 - register error highlights
-- oauth for reg and other db actions?
 
 =====
 DB
@@ -19,3 +14,4 @@ _atu_users
 ====
 Enhancements
 - preferences map accepts preferences of all types (string, int, etc)
+- oauth for reg and other db actions?

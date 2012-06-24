@@ -20,13 +20,17 @@ public class ATU_hiscoreActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        Log.v(LOG_TAG,"sp.hasSharedPrefs = " + ManageSharedPrefs.getPreference(getApplicationContext(), "hasSharedPrefs"));
-        checkForUserData(false);
+        //Log.v(LOG_TAG,"sp.hasSharedPrefs = " + ManageSharedPrefs.getPreference(getApplicationContext(), "hasSharedPrefs"));
+        checkForUserData(true);
     }
     
     private void checkForUserData(boolean doRealCheck) {
     	if(doRealCheck) {
-    		
+    		if(ManageSharedPrefs.getPreference(getApplicationContext(), "hasSharedPrefs") == "yes") {
+    			launchHomeActivity();
+    		} else {
+    			activateButtons();
+    		}
     	} else {
     		activateButtons();
     	}
@@ -37,7 +41,7 @@ public class ATU_hiscoreActivity extends Activity {
     	buttonRegister.setOnClickListener(onButtonClicked);
     	
     	Button buttonSignIn = (Button) findViewById(R.id.button_signIn);
-    	buttonRegister.setOnClickListener(onButtonClicked);
+    	buttonSignIn.setOnClickListener(onButtonClicked);
     }
     
     private void launchHomeActivity() {
