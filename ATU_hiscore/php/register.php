@@ -50,8 +50,6 @@
 			$return['msg'] = 'added';
 		}
 
-		echo(2);
-
 		echo json_encode($return);
 	} else {
 		die('Unauthorized attempt');

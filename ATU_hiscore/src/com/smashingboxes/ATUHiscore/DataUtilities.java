@@ -68,7 +68,7 @@ public class DataUtilities {
 		// parse json data
 		try {
 			jsonData = new JSONObject(result);
-			Log.v(LOG_TAG, "isSucces: " + jsonData.getString("isSuccess"));
+			Log.v(LOG_TAG, "isSuccess: " + jsonData.getString("isSuccess"));
 		} catch(JSONException e) {
 			Log.v(LOG_TAG, "Error parsing data " + e.toString());
 		}

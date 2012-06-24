@@ -1,10 +1,14 @@
 package com.smashingboxes.ATUHiscore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
+
+import com.smashingboxes.utilities.ManageSharedPrefs;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -102,7 +106,18 @@ public class RegisterActivity extends Activity {
 		nameValuePairs.add(new BasicNameValuePair("PIN", pPIN));
 		
 		JSONObject jsonData = DataUtilities.post("http://www.monkeydriver.com/atu/site.php", nameValuePairs);
-		Log.v(LOG_TAG,"@ jsonData = " + jsonData);
+		//Log.v(LOG_TAG,"@ jsonData = " + jsonData);
+		//Log.v(LOG_TAG,"@ jsonData.isSuccess = " + jsonData.getString("isSuccess"));
+		
+		// add user info to shared preferences
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("hasSharedPrefs", "yes");
+		map.put("name",jsonData.getString("name"));
+		map.put("email", jsonData.getString("email"));
+		map.put("PIN", jsonData.getString("PIN"));
+		
+		ManageSharedPrefs.setPreferences(getApplicationContext(), map);
+		//Log.v(LOG_TAG,"sp.name = " + ManageSharedPrefs.getPreference(getApplicationContext(), "name"));
 	}
 	
 	private OnClickListener onButtonClicked = new OnClickListener() {
