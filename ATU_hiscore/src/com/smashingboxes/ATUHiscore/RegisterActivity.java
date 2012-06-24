@@ -8,6 +8,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import com.smashingboxes.customViews.CustomEditText;
 import com.smashingboxes.utilities.ManageSharedPrefs;
 
 import android.app.Activity;
@@ -48,8 +49,12 @@ public class RegisterActivity extends Activity {
 		//check for empty name and PIN fields
 		if(((EditText)findViewById(R.id.register_field_name)).length() == 0) {
 			isValid = false;
-			//TODO display empty field error
+			
+			//display empty field error
+			((CustomEditText)findViewById(R.id.register_field_name)).setError(true);
+			
 			Log.v(LOG_TAG, "## name field empty");
+			
 		}
 		if(((EditText)findViewById(R.id.register_field_pin)).length() == 0) {
 			isValid = false;

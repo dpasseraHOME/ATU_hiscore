@@ -57,7 +57,7 @@
 	        android:textAppearance="?android:attr/textAppearanceMedium"
 	        android:textColor="@color/text_dark" />
 	
-	    <EditText
+	    <com.smashingboxes.customViews.CustomEditText
 	        android:id="@+id/register_field_name"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
@@ -66,10 +66,11 @@
 	        android:layout_marginTop="6dp"
 	        android:ems="10"
 	        android:inputType="text"
+	        android:background="@drawable/edit_text_selector"
 	        android:hint="@string/register_label_name" >
 	
 	        <requestFocus />
-	    </EditText>
+	    </com.smashingboxes.customViews.CustomEditText>
 	    
 	    <TextView
 	        android:id="@+id/register_label_email"
@@ -82,7 +83,7 @@
 	        android:textAppearance="?android:attr/textAppearanceMedium"
 	        android:textColor="@color/text_dark" />
 	
-	    <EditText
+	    <com.smashingboxes.customViews.CustomEditText
 	        android:id="@+id/register_field_email"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
@@ -92,7 +93,7 @@
 	        android:ems="10"
 	        android:inputType="textEmailAddress"
 	        android:hint="@string/register_label_email" >
-	    </EditText>
+	    </com.smashingboxes.customViews.CustomEditText>
 	    
 	    <TextView
 	        android:id="@+id/register_label_email_confirm"
@@ -105,7 +106,7 @@
 	        android:textAppearance="?android:attr/textAppearanceMedium"
 	        android:textColor="@color/text_dark" />
 	
-	    <EditText
+	    <com.smashingboxes.customViews.CustomEditText
 	        android:id="@+id/register_field_email_confirm"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
@@ -115,7 +116,7 @@
 	        android:ems="10"
 	        android:inputType="textEmailAddress"
 	        android:hint="@string/register_label_email_confirm" >
-	    </EditText>
+	    </com.smashingboxes.customViews.CustomEditText>
 	    
 	    <TextView
 	        android:id="@+id/register_label_pin"
@@ -128,7 +129,7 @@
 	        android:textAppearance="?android:attr/textAppearanceMedium"
 	        android:textColor="@color/text_dark" />
 	
-	    <EditText
+	    <com.smashingboxes.customViews.CustomEditText
 	        android:id="@+id/register_field_pin"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
@@ -138,7 +139,7 @@
 	        android:ems="4"
 	        android:inputType="textPassword|number"
 	        android:hint="@string/register_label_pin" >
-	    </EditText>
+	    </com.smashingboxes.customViews.CustomEditText>
 	
 	    <CheckBox
 	        android:id="@+id/register_opt_in1"

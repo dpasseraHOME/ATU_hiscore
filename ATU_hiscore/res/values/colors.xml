@@ -2,5 +2,9 @@
 <resources>
    <color name="text_dark">#000000</color>
    <color name="box_med">#eeeeee</color>
-
+   <color name="textview_error">#ff0000</color>
+   <color name="editText_box">#ffffff</color>
+   <color name="editText_strokeGood">#c2c2c2</color>
+   <color name="editText_strokeError">#9e0b0f</color>
+   
 </resources>
