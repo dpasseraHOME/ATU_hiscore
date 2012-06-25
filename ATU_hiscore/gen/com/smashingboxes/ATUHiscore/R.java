@@ -9,22 +9,6 @@ package com.smashingboxes.ATUHiscore;
 
 public final class R {
     public static final class attr {
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int state_error=0x7f010001;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int state_good=0x7f010000;
     }
     public static final class color {
         public static final int box_med=0x7f040001;
@@ -38,10 +22,9 @@ containing a value of this type.
         public static final int background_linear=0x7f020000;
         public static final int edit_text_error=0x7f020001;
         public static final int edit_text_good=0x7f020002;
-        public static final int edit_text_selector=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int title_box=0x7f020005;
-        public static final int title_box_short=0x7f020006;
+        public static final int ic_launcher=0x7f020003;
+        public static final int title_box=0x7f020004;
+        public static final int title_box_short=0x7f020005;
     }
     public static final class id {
         public static final int button_register=0x7f070003;
@@ -98,49 +81,4 @@ containing a value of this type.
         public static final int title_box=0x7f060000;
         public static final int title_box_short=0x7f060001;
     }
-    public static final class styleable {
-        /** Attributes that can be used with a editTextState.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #editTextState_state_error com.smashingboxes.ATUHiscore:state_error}</code></td><td></td></tr>
-           <tr><td><code>{@link #editTextState_state_good com.smashingboxes.ATUHiscore:state_good}</code></td><td></td></tr>
-           </table>
-           @see #editTextState_state_error
-           @see #editTextState_state_good
-         */
-        public static final int[] editTextState = {
-            0x7f010000, 0x7f010001
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.smashingboxes.ATUHiscore.R.attr#state_error}
-          attribute's value can be found in the {@link #editTextState} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:state_error
-        */
-        public static final int editTextState_state_error = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.smashingboxes.ATUHiscore.R.attr#state_good}
-          attribute's value can be found in the {@link #editTextState} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name android:state_good
-        */
-        public static final int editTextState_state_good = 0;
-    };
 }

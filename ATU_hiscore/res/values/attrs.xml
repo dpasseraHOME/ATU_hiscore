@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    
-    <declare-styleable name="editTextState">
-        <attr name="state_good" format="boolean" />
-        <attr name="state_error" format="boolean" />
-    </declare-styleable>
-    
-</resources>
