@@ -24,6 +24,9 @@
 			include('register.php');
 			break;
 
+		default:
+			echo('bad action');
+
 	}
 
 ?>

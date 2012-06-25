@@ -1,25 +1,36 @@
 package com.smashingboxes.ATUHiscore;
 
+import com.smashingboxes.utilities.ManageSharedPrefs;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class ATU_hiscoreActivity extends Activity {
+	
+	private final String LOG_TAG = "log_Main";
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        checkForUserData(false);
+        //Log.v(LOG_TAG,"sp.hasSharedPrefs = " + ManageSharedPrefs.getPreference(getApplicationContext(), "hasSharedPrefs"));
+        checkForUserData(true);
     }
     
     private void checkForUserData(boolean doRealCheck) {
     	if(doRealCheck) {
-    		
+    		if(ManageSharedPrefs.getPreference(getApplicationContext(), "hasSharedPrefs") == "yes") {
+    			launchHomeActivity();
+    		} else {
+    			activateButtons();
+    		}
     	} else {
     		activateButtons();
     	}
@@ -30,7 +41,7 @@ public class ATU_hiscoreActivity extends Activity {
     	buttonRegister.setOnClickListener(onButtonClicked);
     	
     	Button buttonSignIn = (Button) findViewById(R.id.button_signIn);
-    	buttonRegister.setOnClickListener(onButtonClicked);
+    	buttonSignIn.setOnClickListener(onButtonClicked);
     }
     
     private void launchHomeActivity() {

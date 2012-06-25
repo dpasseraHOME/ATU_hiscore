@@ -66,6 +66,7 @@
 	        android:layout_marginTop="6dp"
 	        android:ems="10"
 	        android:inputType="text"
+	        android:background="@drawable/edit_text_good"
 	        android:hint="@string/register_label_name" >
 	
 	        <requestFocus />
@@ -91,6 +92,7 @@
 	        android:layout_marginTop="6dp"
 	        android:ems="10"
 	        android:inputType="textEmailAddress"
+	        android:background="@drawable/edit_text_good"
 	        android:hint="@string/register_label_email" >
 	    </EditText>
 	    
@@ -114,6 +116,7 @@
 	        android:layout_marginTop="6dp"
 	        android:ems="10"
 	        android:inputType="textEmailAddress"
+	        android:background="@drawable/edit_text_good"
 	        android:hint="@string/register_label_email_confirm" >
 	    </EditText>
 	    
@@ -137,6 +140,7 @@
 	        android:layout_marginTop="6dp"
 	        android:ems="4"
 	        android:inputType="textPassword|number"
+	        android:background="@drawable/edit_text_good"
 	        android:hint="@string/register_label_pin" >
 	    </EditText>
 	

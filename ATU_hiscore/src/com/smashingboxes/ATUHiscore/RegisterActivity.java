@@ -1,10 +1,14 @@
 package com.smashingboxes.ATUHiscore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
+
+import com.smashingboxes.utilities.ManageSharedPrefs;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -41,35 +45,53 @@ public class RegisterActivity extends Activity {
 		
 		Boolean isValid = true;
 		
+		//reset fields
+		EditText fieldName = ((EditText)findViewById(R.id.register_field_name));
+		EditText fieldEmail = ((EditText)findViewById(R.id.register_field_email));
+		EditText fieldEmailConfirm = ((EditText)findViewById(R.id.register_field_email_confirm));
+		EditText fieldPin = ((EditText)findViewById(R.id.register_field_pin));
+		
+		fieldName.setBackgroundResource(R.drawable.edit_text_good);
+		fieldEmail.setBackgroundResource(R.drawable.edit_text_error);
+		fieldEmailConfirm.setBackgroundResource(R.drawable.edit_text_error);
+		fieldPin.setBackgroundResource(R.drawable.edit_text_error);
+		
+		
 		//check for empty name and PIN fields
-		if(((EditText)findViewById(R.id.register_field_name)).length() == 0) {
+		if(fieldName.length() == 0) {
 			isValid = false;
-			//TODO display empty field error
+			
+			//display empty field error
+			fieldName.setBackgroundResource(R.drawable.edit_text_error);			
 			Log.v(LOG_TAG, "## name field empty");
+			
 		}
-		if(((EditText)findViewById(R.id.register_field_pin)).length() == 0) {
+		if(fieldPin.length() == 0) {
 			isValid = false;
 			//TODO display empty field error
+			fieldPin.setBackgroundResource(R.drawable.edit_text_error);
 			Log.v(LOG_TAG, "## pin field empty");
 		}
 		
-		String email = ((EditText)findViewById(R.id.register_field_email)).getText().toString();
-		String emailConfirm = ((EditText)findViewById(R.id.register_field_email_confirm)).getText().toString();
+		String email = fieldEmail.getText().toString();
+		String emailConfirm = fieldEmailConfirm.getText().toString();
 		
 		//check for empty email and email_confirm fields before testing email - email_confirm match
-		if(((EditText)findViewById(R.id.register_field_email)).length() == 0) {
+		if(fieldEmail.length() == 0) {
 			isValid = false;
 			//TODO display empty field error
+			fieldEmail.setBackgroundResource(R.drawable.edit_text_error);
 			Log.v(LOG_TAG, "## email field empty");
 		}
 		
 		if(!DataUtilities.isEmailValid(email)) {
 			isValid = false;
 			//TODO display empty field error
+			fieldEmail.setBackgroundResource(R.drawable.edit_text_error);
 			Log.v(LOG_TAG, "## email is invalid");
 		}
 		
-		if(((EditText)findViewById(R.id.register_field_email_confirm)).length() == 0) {
+		if(fieldEmailConfirm.length() == 0) {
 			isValid = false;
 			//TODO display empty field error
 			Log.v(LOG_TAG, "## email confirm field empty");
@@ -78,6 +100,7 @@ public class RegisterActivity extends Activity {
 		if(!email.equals(emailConfirm)) {
 			isValid = false;
 			//TODO display email validation error
+			fieldEmailConfirm.setBackgroundResource(R.drawable.edit_text_error);
 			Log.v(LOG_TAG, "## email confirm does not match email");
 			Log.v(LOG_TAG, "@@ " + email + " <> " + emailConfirm);
 		}
@@ -102,7 +125,18 @@ public class RegisterActivity extends Activity {
 		nameValuePairs.add(new BasicNameValuePair("PIN", pPIN));
 		
 		JSONObject jsonData = DataUtilities.post("http://www.monkeydriver.com/atu/site.php", nameValuePairs);
-		Log.v(LOG_TAG,"@ jsonData = " + jsonData);
+		//Log.v(LOG_TAG,"@ jsonData = " + jsonData);
+		//Log.v(LOG_TAG,"@ jsonData.isSuccess = " + jsonData.getString("isSuccess"));
+		
+		// add user info to shared preferences
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("hasSharedPrefs", "yes");
+		map.put("name",jsonData.getString("name"));
+		map.put("email", jsonData.getString("email"));
+		map.put("PIN", jsonData.getString("PIN"));
+		
+		ManageSharedPrefs.setPreferences(getApplicationContext(), map);
+		//Log.v(LOG_TAG,"sp.name = " + ManageSharedPrefs.getPreference(getApplicationContext(), "name"));
 	}
 	
 	private OnClickListener onButtonClicked = new OnClickListener() {
