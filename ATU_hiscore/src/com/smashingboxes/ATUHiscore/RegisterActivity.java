@@ -11,6 +11,9 @@ import org.json.JSONObject;
 import com.smashingboxes.utilities.ManageSharedPrefs;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +25,7 @@ import android.widget.EditText;
 public class RegisterActivity extends Activity {
 	
 	final String LOG_TAG = "log_RegisterActivity";
+	final Context context = this;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -52,9 +56,9 @@ public class RegisterActivity extends Activity {
 		EditText fieldPin = ((EditText)findViewById(R.id.register_field_pin));
 		
 		fieldName.setBackgroundResource(R.drawable.edit_text_good);
-		fieldEmail.setBackgroundResource(R.drawable.edit_text_error);
-		fieldEmailConfirm.setBackgroundResource(R.drawable.edit_text_error);
-		fieldPin.setBackgroundResource(R.drawable.edit_text_error);
+		fieldEmail.setBackgroundResource(R.drawable.edit_text_good);
+		fieldEmailConfirm.setBackgroundResource(R.drawable.edit_text_good);
+		fieldPin.setBackgroundResource(R.drawable.edit_text_good);
 		
 		
 		//check for empty name and PIN fields
@@ -125,18 +129,40 @@ public class RegisterActivity extends Activity {
 		nameValuePairs.add(new BasicNameValuePair("PIN", pPIN));
 		
 		JSONObject jsonData = DataUtilities.post("http://www.monkeydriver.com/atu/site.php", nameValuePairs);
-		//Log.v(LOG_TAG,"@ jsonData = " + jsonData);
-		//Log.v(LOG_TAG,"@ jsonData.isSuccess = " + jsonData.getString("isSuccess"));
+		Log.v(LOG_TAG,"@ jsonData = " + jsonData);
+		Log.v(LOG_TAG,"@ jsonData.isSuccess = " + jsonData.getString("isSuccess"));
 		
-		// add user info to shared preferences
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("hasSharedPrefs", "yes");
-		map.put("name",jsonData.getString("name"));
-		map.put("email", jsonData.getString("email"));
-		map.put("PIN", jsonData.getString("PIN"));
+		if(jsonData.getString("isSuccess").equals("yes")) {
+			Log.v(LOG_TAG,"successful registration");
+			// add user info to shared preferences
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("hasSharedPrefs", "yes");
+			map.put("name",jsonData.getString("name"));
+			map.put("email", jsonData.getString("email"));
+			map.put("PIN", jsonData.getString("PIN"));
 		
-		ManageSharedPrefs.setPreferences(getApplicationContext(), map);
-		//Log.v(LOG_TAG,"sp.name = " + ManageSharedPrefs.getPreference(getApplicationContext(), "name"));
+			ManageSharedPrefs.setPreferences(getApplicationContext(), map);
+			//Log.v(LOG_TAG,"sp.name = " + ManageSharedPrefs.getPreference(getApplicationContext(), "name"));
+		} else {
+			Log.v(LOG_TAG,"unsuccessful registration");
+			String errors = "";
+			if(jsonData.getString("msg").indexOf("duplicate name") > -1) {
+				errors += "\nDisplay name already registered";
+			}
+			if(jsonData.getString("msg").indexOf("duplicate email") > -1) {
+				errors += "\nEmail address already in use";
+			}
+			
+			new AlertDialog.Builder( this )
+			.setTitle( "Registration error" )
+			.setMessage( "You could not be registered due to the following errors:\n"+errors+"\n\nPlease try again." )
+			.setPositiveButton( "Okay", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+			})
+			.show();
+		}
 	}
 	
 	private OnClickListener onButtonClicked = new OnClickListener() {
@@ -153,7 +179,15 @@ public class RegisterActivity extends Activity {
 						e.printStackTrace();
 					}
 				} else {
-					
+					new AlertDialog.Builder(context)
+					.setTitle( "Form error" )
+					.setMessage( "Please correct the highlighted fields." )
+					.setPositiveButton( "Okay", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					})
+					.show();
 				}
 			} else {
 				launchMainActivity();
