@@ -9,4 +9,9 @@
         <item name="android:background">@drawable/title_box_short</item>
     </style>
     
+    <style name="instructions_panel">
+        <item name="android:background">@drawable/instructions_panel</item>
+        <item name="android:padding">12dp</item>
+    </style>
+    
 </resources>
