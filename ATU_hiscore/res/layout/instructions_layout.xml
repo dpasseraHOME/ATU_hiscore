@@ -31,7 +31,7 @@
 	        android:layout_below="@+id/instructions_title"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="24dp"
-	        android:text="@string/register_header"
+	        android:text="@string/instructions_regConfirm1"
 	        android:textAppearance="?android:attr/textAppearanceLarge"
 	        android:textColor="@color/text_dark" />
 	
@@ -52,7 +52,7 @@
 	        android:layout_below="@+id/horizontal_1"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="12dp"
-	        android:text="@string/register_header"
+	        android:text="@string/instructions_regConfirm2"
 	        android:textAppearance="?android:attr/textAppearanceLarge"
 	        android:textColor="@color/text_dark" />
 
@@ -68,7 +68,67 @@
 	        android:layout_marginLeft="12dp"
 	        android:layout_marginRight="12dp"
 	        android:isScrollContainer="true"
-	        android:paddingBottom="12dp" >
+	        android:padding="12dp" >
+	        
+	        <TextView
+		        android:id="@+id/instructions_panelText1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerHorizontal="true"
+		        android:text="@string/instructions_panel1"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:textColor="@color/text_light" />
+	        
+	    </RelativeLayout>
+	    
+	    <!--  second panel -->
+	    <RelativeLayout
+	        android:id="@+id/instructions_panel2"
+	        style="@style/instructions_panel"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/instructions_panel1"
+	        android:layout_marginTop="12dp"
+	        android:layout_marginLeft="12dp"
+	        android:layout_marginRight="12dp"
+	        android:isScrollContainer="true"
+	        android:padding="12dp" >
+	        
+	        <TextView
+		        android:id="@+id/instructions_panelText2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerHorizontal="true"
+		        android:text="@string/instructions_panel2"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:textColor="@color/text_light" />
+	        
+	    </RelativeLayout>
+	    
+	    <!--  third panel -->
+	    <RelativeLayout
+	        android:id="@+id/instructions_panel3"
+	        style="@style/instructions_panel"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/instructions_panel2"
+	        android:layout_marginTop="12dp"
+	        android:layout_marginLeft="12dp"
+	        android:layout_marginRight="12dp"
+	        android:isScrollContainer="true"
+	        android:padding="12dp" >
+	        
+	        <TextView
+		        android:id="@+id/instructions_panelText3"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerHorizontal="true"
+		        android:text="@string/instructions_panel3"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:textColor="@color/text_light" />
+	        
 	    </RelativeLayout>
 	
 	</RelativeLayout>

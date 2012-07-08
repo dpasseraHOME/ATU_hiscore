@@ -24,6 +24,11 @@
     <string name="register_opt_in1">Check to receive weekly digest of new scores and rankings.</string>
     <string name="register_opt_in2">Check to receive push notifications when your scores are approved, or when your rankings change.</string>
     
-    
+    <!-- instructions -->
+    <string name="instructions_regConfirm1">You are now registered.</string>
+    <string name="instructions_regConfirm2">What\'s next?</string>
+    <string name="instructions_panel1">Play a game in the ATU Arcade.</string>
+    <string name="instructions_panel2">Use the ATU Hi-score app to photograph and submit your score.</string>
+    <string name="instructions_panel3">When your score is verified, you will be notified that it\'s been added to the rankings.</string>
     
 </resources>
