@@ -8,7 +8,7 @@
 	    android:layout_height="wrap_content"
 	    android:background="@drawable/background_linear"
 	    android:isScrollContainer="true"
-	    android:paddingBottom="18dp" >
+	    android:padding="@string/standard_padding" >
 	
 	    <TextView
 	        android:id="@+id/instructions_title"
@@ -22,7 +22,7 @@
 	        android:text="@string/main_title"
 	        android:textAppearance="?android:attr/textAppearanceLarge"
 	        android:textColor="@color/text_dark"
-	        android:textSize="16sp" />
+	        android:textSize="16dp" />
 	    
 	    <TextView
 	        android:id="@+id/instructions_header1"
@@ -64,20 +64,27 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentLeft="true"
 	        android:layout_below="@+id/instructions_header2"
-	        android:layout_marginTop="12dp"
-	        android:layout_marginLeft="12dp"
-	        android:layout_marginRight="12dp"
+	        android:layout_marginTop="@string/standard_margin"
 	        android:isScrollContainer="true"
-	        android:padding="12dp" >
-	        
+	        android:padding="@string/standard_padding" >
+
+	        <ImageView
+	            android:id="@+id/instructions_image1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:src="@drawable/instructions_fpo" />
+	        
 	        <TextView
-		        android:id="@+id/instructions_panelText1"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_centerHorizontal="true"
-		        android:text="@string/instructions_panel1"
-		        android:textAppearance="?android:attr/textAppearanceLarge"
-		        android:textColor="@color/text_light" />
+	            android:id="@+id/instructions_panelText1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_toRightOf="@+id/instructions_image1"
+	            android:layout_marginLeft="@string/standard_margin"
+	            android:text="@string/instructions_panel1"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textColor="@color/text_light" />
 	        
 	    </RelativeLayout>
 	    
@@ -89,19 +96,34 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentLeft="true"
 	        android:layout_below="@+id/instructions_panel1"
-	        android:layout_marginTop="12dp"
-	        android:layout_marginLeft="12dp"
-	        android:layout_marginRight="12dp"
+	        android:layout_marginTop="@string/standard_margin"
 	        android:isScrollContainer="true"
-	        android:padding="12dp" >
+	        android:padding="@string/standard_padding" >
+
+	        <ImageView
+	            android:id="@+id/instructions_image2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            android:src="@drawable/instructions_fpo" />
+
+	        <ImageView
+	            android:id="@+id/instructions_image3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_toRightOf="@+id/instructions_image2"
+	            android:layout_marginLeft="@string/standard_margin"
+	            android:src="@drawable/instructions_fpo" />
 	        
 	        <TextView
 		        android:id="@+id/instructions_panelText2"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_centerHorizontal="true"
+		        android:layout_below="@+id/instructions_image2"
+		        android:layout_marginTop="@string/standard_margin"
 		        android:text="@string/instructions_panel2"
-		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:textAppearance="?android:attr/textAppearanceMedium"
 		        android:textColor="@color/text_light" />
 	        
 	    </RelativeLayout>
@@ -114,20 +136,27 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentLeft="true"
 	        android:layout_below="@+id/instructions_panel2"
-	        android:layout_marginTop="12dp"
-	        android:layout_marginLeft="12dp"
-	        android:layout_marginRight="12dp"
+	        android:layout_marginTop="@string/standard_margin"
 	        android:isScrollContainer="true"
-	        android:padding="12dp" >
-	        
+	        android:padding="@string/standard_padding" >
+
+	        <ImageView
+	            android:id="@+id/instructions_image4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentRight="true"
+	            android:layout_centerVertical="true"
+	            android:src="@drawable/instructions_fpo" />
+
 	        <TextView
-		        android:id="@+id/instructions_panelText3"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_centerHorizontal="true"
-		        android:text="@string/instructions_panel3"
-		        android:textAppearance="?android:attr/textAppearanceLarge"
-		        android:textColor="@color/text_light" />
+	            android:id="@+id/instructions_panelText3"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_toLeftOf="@+id/instructions_image4"
+	            android:layout_marginRight="@string/standard_margin"
+	            android:text="@string/instructions_panel3"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textColor="@color/text_light" />
 	        
 	    </RelativeLayout>
 	

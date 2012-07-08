@@ -3,6 +3,11 @@
 
     <string name="app_name">ATU_hiscore</string>
     
+    <!--  general measurements -->
+    <string name="standard_margin">12dp</string>
+    <string name="standard_padding">12dp</string>
+    
+    
     <!--  general labels -->
     <string name="button_register">Register</string>
     <string name="button_signIn">Sign in</string>
